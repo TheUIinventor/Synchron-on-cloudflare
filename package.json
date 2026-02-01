@@ -2,13 +2,14 @@
   "packageManager": "pnpm@10.13.1",
   "scripts": {
     "dev": "next dev",
-    "build": "next build && npx @cloudflare/next-on-pages@latest --outdir ./.next-on-pages",
-    "build:cf": "next build && npx @cloudflare/next-on-pages@latest --outdir ./.next-on-pages",
+    "build": "next build",
+    "postbuild": "npx @cloudflare/next-on-pages@latest --outdir ./.next-on-pages",
+    "build:cf": "pnpm run build",
     "export": "next export",
     "start": "next start",
     "lint": "next lint",
     "deploy": "pnpm run build && npx wrangler deploy",
-    "deploy:cf": "pnpm run build:cf && npx wrangler deploy"
+    "deploy:cf": "pnpm run build && npx wrangler deploy"
   },
   "dependencies": {
     "@emotion/is-prop-valid": "latest",
